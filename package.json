@@ -1,13 +1,1 @@
-{
-  "name": "zando-connect-platform",
-  "version": "3.0.0",
-  "private": true,
-  "description": "Zando Connect - marketplace platform",
-  "workspaces": ["apps/*", "backend", "shared"],
-  "scripts": {
-    "dev": "node --workspace backend run dev",
-    "start": "node --workspace backend start",
-    "test": "node --workspace backend test",
-    "check": "node --workspace backend run check"
-  }
-}
+{"name":"@zando/backend","version":"9.0.0","private":true,"main":"src/server.js","scripts":{"dev":"node --watch src/server.js","start":"node src/server.js","test":"node --test","check":"node --check src/server.js && node --check src/app.js && node --check src/authService.js && node --check src/paymentService.js && node --check src/repository/memoryRepository.js && node --check src/repository/postgresRepository.js && node --check src/merchantService.js && node --check src/orderService.js && node --check src/deliveryService.js && node --check src/trackingService.js && node --check src/commissionService.js && node --check src/routingService.js && node --check src/notificationService.js && node --check src/rateLimiter.js"},"dependencies":{"pg":"^8.16.3"}}
