@@ -1,0 +1,13 @@
+{
+  "name": "zando-connect-platform",
+  "version": "3.0.0",
+  "private": true,
+  "description": "Zando Connect - marketplace platform",
+  "workspaces": ["apps/*", "backend", "shared"],
+  "scripts": {
+    "dev": "node --workspace backend run dev",
+    "start": "node --workspace backend start",
+    "test": "node --workspace backend test",
+    "check": "node --workspace backend run check"
+  }
+}
