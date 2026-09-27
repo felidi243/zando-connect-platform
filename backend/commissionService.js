@@ -1,0 +1,4 @@
+function fail(message,status=400){throw Object.assign(new Error(message),{status});}
+function rateForCategory(categoryId,rules=[]){const r=rules.find(x=>x.active&&x.categoryId===categoryId)||rules.find(x=>x.active&&x.categoryId===null);return Number(r?.ratePercent??0);}
+function calculate(order,rules=[]){const groups=new Map();for(const i of order.items){const key=i.merchantId;const g=groups.get(key)||{merchantId:key,grossAmount:0,items:[]};g.grossAmount+=Number(i.lineTotal);g.items.push(i);groups.set(key,g);}return [...groups.values()].map(g=>{const rates=g.items.map(i=>rateForCategory(i.categoryId,rules));const rate=rates.length?Math.max(...rates):0;const commission=Math.round(g.grossAmount*rate)/100;return {...g,ratePercent:rate,commissionAmount:commission,merchantNetAmount:Math.round((g.grossAmount-commission)*100)/100};});}
+module.exports={calculate,rateForCategory};
